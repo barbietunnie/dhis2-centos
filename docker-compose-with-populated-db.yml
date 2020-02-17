@@ -1,0 +1,21 @@
+version: '3'
+services:
+  dhis2_db:
+    image: mdillon/postgis:10-alpine
+    command: postgres -c max_locks_per_transaction=100
+    environment:
+      POSTGRES_USER: dhis
+      POSTGRES_DB: dhis2
+      POSTGRES_PASSWORD: dhis
+    volumes: 
+    - ./config/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+  dhis2_web:
+    image: dhis2/core:2.31.7
+    volumes:
+    - ./config/dhis2_home/dhis.conf:/DHIS2_home/dhis.conf
+    environment: 
+    - WAIT_FOR_DB_CONTAINER=dhis2_db:5432 -t 0
+    ports:
+    - "8080:8080"
+    depends_on:
+    - dhis2_db
