@@ -25,3 +25,5 @@ Steps:
     ```
     docker-compose -f docker-compose-with-populated-db.yml up -d
     ```
+
+More detailed notes about seeting up DHIS2 with Docker is available [here](https://developers.dhis2.org/2019/10/dhis2-and-docker/).
