@@ -26,4 +26,6 @@ Steps:
     docker-compose -f docker-compose-with-populated-db.yml up -d
     ```
 
+If you prefer to setup a different version of [DHIS2 core](https://hub.docker.com/r/dhis2/core), you can view the available versions at [Docker Hub](https://hub.docker.com/r/dhis2/core/tags), select the version you desire, and update the `dhis2_web` container image in `docker-compose.yml` accordingly.
+
 More detailed notes about seeting up DHIS2 with Docker is available [here](https://developers.dhis2.org/2019/10/dhis2-and-docker/).
